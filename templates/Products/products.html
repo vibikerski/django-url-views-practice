@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>List of products</title>
+</head>
+<body>
+    <ul>
+    {% for product in products %}
+        <li><a href="{% url 'product' product.id %}">{{product.name}}, {{product.price}}</a></li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
