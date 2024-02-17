@@ -11,6 +11,10 @@
         <p>{{product.description}}</p>
     </article>
 
+    <h2>Reviews</h2>
+
+    {% include "Products/review_post.html" with product=product%}
+
     {% if reviews %}
     {% for review in reviews %}
     <div class="review">
