@@ -1,0 +1,19 @@
+<div class="review-add">
+    <form method="POST" action="{% url 'add_review'%}">
+    {% csrf_token %}
+    <input type="hidden" name="product_id" value="{{ product.id }}">
+    <p>
+        <label for="author-name">Your name:</label>
+        <input type="text" id="author-name" name="author-name">
+    </p>
+    <p>
+        <label for="review">Comment:</label>
+        <textarea id="review" name="review"></textarea>
+    </p>
+    <p>
+        <label for="rating">Your rating of the product:</label>
+        <input type="number" id="rating" name="rating" min="0" max="5">
+    </p><br>
+    <button type="Submit">Send the comment</button>
+    </form>
+</div>
