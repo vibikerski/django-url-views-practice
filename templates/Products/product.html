@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>{{product.name}}</title>
+</head>
+<body>
+    <article class="product">
+        <h1>{{product.name}} for {{product.price}}</h1>
+        <p>{{product.description}}</p>
+    </article>
+
+    {% if reviews %}
+    {% for review in reviews %}
+    <div class="review">
+        <h3>{{review.author}}: Rating {{review.rating}}</h3>
+        <p>{{review.text}}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>
