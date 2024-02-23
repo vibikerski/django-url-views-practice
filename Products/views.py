@@ -1,12 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
-from django.http import Http404
 from Products.models import Product, Review
 
 def get_product(request, product_id):
-    try:
-        product = get_object_or_404(Product, id=product_id)
-    except Http404:
-        return redirect('products')
+    product = get_object_or_404(Product, id=product_id)
 
     reviews = Review.objects.filter(product=product)
     
@@ -44,15 +40,12 @@ def add_review(request):
     if not (author and text and rating and product_id):
         return HttpResponse('Missing required data', status=400)
     
-    try:
-        product = get_object_or_404(Product, id=product_id)
-        review = Review.objects.create(
-            product=product,
-            author=author,
-            text=text,
-            rating=rating
-        )
-    except Http404:
-        return HttpResponse('Server issue', status=500)
+    product = get_object_or_404(Product, id=product_id)
+    Review.objects.create(
+        product=product,
+        author=author,
+        text=text,
+        rating=rating
+    )
     
     return redirect('product', product_id=product_id)
